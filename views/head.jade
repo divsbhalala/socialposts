@@ -1,0 +1,33 @@
+doctype html
+html
+    head
+        title ReplyMap
+        link(rel='stylesheet', href='/css/style.css')
+        script(src='/js/jquery.min.js')
+        script(src='/js/home.js')
+    -if(useheader === true){
+        body
+            -if(producthunt === 'true'){
+                .toppex Hey Product Hunters, Enjoy our Beta Pricing during our release :) (50% off / 5$ a month)!
+            -}
+            .home-header
+                .home-center
+                    a(href='/')
+                        .home-header-logo-container
+                            .home-header-logo
+                            .home-header-text
+                                | HubYard
+                    .home-header-menu
+                        a(href='http://blog.hubyard.com/')
+                            .home-header-menu-item.grey Blog
+                        a(href='https://github.com/HubYard/HubYard')
+                            .home-header-menu-item.grey Source
+                        a(href='/login')
+                            .home-header-menu-item Login
+                        a(href='/signup')
+                            .home-header-menu-item.beta-push
+                                | Sign Up
+    -} else {
+        body
+    -}
+    block content

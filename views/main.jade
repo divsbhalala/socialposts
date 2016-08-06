@@ -1,0 +1,255 @@
+extends layout
+
+block content
+    .error_message
+        .error_message-header ERROR
+        .error_message-text
+    include upgrade
+    .exploded-image-container
+        img.exploded-image
+    sidebar
+        .protecto
+            header
+                .header-logo-container
+                    .home-header-logo
+                .header-option-buttons
+                    .header-option-button.minimize-width.icon-left-open
+                    .header-option-button.open-setting-options.icon-cog
+            .partition
+                .partition-header.icon-flash  Dashboards
+                .partition-data
+                    -for(var i = 0; i < canvases.length; i++){
+                        - var selected = '';
+                        -if(i === parseFloat(udata.options.canvas)){
+                            -selected = 'selected'
+                        -}
+                        .partition-information.switch-canvas(class= selected data-id= canvases[i].id )
+                            .partition-icon.icon-menu
+                            .partition-text= canvases[i].name
+                            .partition-settings.icon-cog
+                            include options/canvas
+                    -}
+                    .partition-information.selected.tutorial_object.tutorial_2
+                            .partition-icon.icon-menu
+                            .partition-text Sample dashboard
+                    .partition-information.add-new-canvas
+                        .partition-icon.icon-plus
+                        .partition-text Add new dashboard
+            .partition
+                .partition-header.icon-globe  Connected Accounts
+                .partition-data
+                    -for(var i = 0; i < networks.length; i++){
+                        .partition-information.account-item(data-id= networks[i].id )
+                            .partition-image
+                                -if(networks[i].user.picture){
+                                    img(src= networks[i].user.picture)
+                                -}
+                            .partition-text= networks[i].user.name
+                            .partition-settings.icon-cog
+                            include options/network
+                    -}
+                    .partition-information.tutorial_object.tutorial_4
+                            .partition-image
+                            .partition-text !{udata.name}
+                            .partition-settings.icon-cog
+                            .overlay.overlay-networks.tutorial_object.tutorial_3
+                                .overlay-arrow
+                                .overlay-item
+                                    .overlay-header
+                                        | !{udata.name} <a style='font-size:12px; font-weight:normal'>@you</a>
+                                    .overlay-content
+                                        .overlay-block-option
+                                            .overlay-block-item-left Type
+                                            .overlay-block-item-right Social Network
+                                            .clear
+                                            br
+                                            .create-new
+                                                .overlay-block-option(style='text-align:center; font-weight:bold; color:#71818B') Add New Stream
+                                                .overlay-block-option
+                                                    .overlay-block-item-left.dark Home Timeline
+                                                    .overlay-block-item-right.icon-plus
+                                                    .clear
+                    .partition-information.add-new-network
+                        .partition-icon.icon-plus
+                        .partition-text Connect new account
+    content
+        -function findIndexByKeyValue(obj, key, value){
+            -for (var i = 0; i < obj.length; i++) {
+            -    if (obj[i][key] == value) {
+            -        return i;
+            -    }
+            -}
+            -return 0;
+        -}
+        -if(canvases !== undefined && canvases.length !== 0){
+            -for(var i = 0; i < canvases.length; i++){
+                - var selected = '';
+                -if(i === parseFloat(udata.options.canvas)){
+                    - selected = 'selected';
+                -}
+                .canvas(data-id= canvases[i].id class= selected  )
+                    -if(canvases[i].locations){
+                            -for(var j = 0; j < canvases[i].locations.length; j++){
+                                - var x = findIndexByKeyValue(canvases[i].streams, 'id', canvases[i].locations[j])
+                                .stream(class='setup-' + canvases[i].streams[x].appearance data-id= canvases[i].streams[x].id id= canvases[i].streams[x].id data-service= canvases[i].streams[x].service data-network_id= canvases[i].streams[x].network_id data-type= canvases[i].streams[x].type data-query=canvases[i].streams[x].query )
+                                    .stream-header
+                                        .stream-title
+                                            | <a style='font-weight:bold'>@!{canvases[i].streams[x].user}</a> <a class='subdata'>!{canvases[i].streams[x].service}
+                                            -if(canvases[i].streams[x].query){
+                                                | (!{canvases[i].streams[x].query})</a>
+                                            -} else {
+                                                | !{canvases[i].streams[x].type.replace(/_/g," ")}</a>
+                                            -}
+                                        .side-options
+                                            a.reset-stream.icon-ccw(data-id= canvases[i].streams[x].id data-service= canvases[i].streams[x].service)
+                                            -if(canvases[i].owner_id === udata.id){
+                                                a.remove-stream.icon-cancel(data-id= canvases[i].streams[x].id data-service= canvases[i].streams[x].service)
+                                            -}
+                                    .stream-content-comment(id='comment_' + canvases[i].streams[x].id)
+                                        .stream-layer
+                                            div
+                                                .stream-content-return.icon-left-open Back
+                                            .stream-content-comment-content-full
+                                                .stream-content-comment-content
+                                                .stream-content-comment-input
+                                                    textarea(placeholder='Respond to this user!')
+                                                .stream-content-comment-footer
+                                                    .stream-comment-characters
+                                                        | <a id='comment_chars'>0</a> Characters
+                                                    .stream-comment-post
+                                                        .button-line.overlay-block-button.post-action(data-type='comment') Post
+                                                    .clear
+                                                .clear
+                                                .stream-content-comments(id='comments_' + canvases[i].streams[x].id)
+                                    .stream-content-user(id='user_' + canvases[i].streams[x].id)
+                                        .stream-layer
+                                            .stream-user
+                                                .stream-content-return.icon-left-open Back
+                                                .stream-content-head
+                                                    .stream-content-user-picture
+                                                    .stream-content-user-name
+                                                    .clear
+                                                .stream-content-user-details
+                                                .stream-content-user-stats
+                                                .width-burn
+                                            .stream-user-content-feed(id='user_own_' + canvases[i].streams[x].id)
+                                                .stream-content
+                                                    .stream-content-layer
+                                    .stream-content
+                                        .stream-content-layer
+                            -}
+                        -}
+                    -}
+        -} else {
+            .welcome
+                .welcome-main Hello!
+                .welcome-text Hey !{udata.name}, welcome to ReplyMap. Ready to get started?
+                .welcome-fiddy
+                    .start-tutorial.overlay-block-button.tutoral-next(data-next='1') Start Tutorial
+            include tutorial
+        -}
+    overlays
+        -if(udata.email.indexOf('@needstobefixed') !== -1){
+            .email-overcheck
+                .select-net-select(style='width: 500px;')
+                    .select-net-header One last step :)
+                    .select-net-content
+                        div Share us your email so we can send you important updates.
+                        input.email-item-add(type='email' placeholder='Enter your email')
+                        .add-email-tool Confirm
+        -}
+        #item_noemail.modal
+            .modal-text Your email isn't real. <br><br> (we need it to be so we can keep you informed about your payment) <br><br> Please create a real one. <br><br> (if it is real, just refresh this page and try again)
+            .button-line.modal-quit Got It!
+        #item_whatisthis.modal
+            .modal-text This section is for experimental features, be warned, you might break your browser or something.
+            .button-line.modal-quit Got It!
+        .orbs
+            .orb#orb_whatisthis
+                .orb-icon.icon-lamp
+                .orb-text What's this?
+            .orb
+                .orb-icon.icon-pencil
+                .orb-text Publish
+        .nowidth
+            .header-option-button.minimize-width.icon-right-open
+        .overlay.overlay-setting-options
+            .overlay-item
+                .overlay-content
+                    .overlay-block-option.account-settings Settings
+                    a(href='mailto:hello@replymap.com' target='_blank')
+                        .overlay-block-option Help
+                    a(href='/logout')
+                        .overlay-block-option Log Out
+        .overlay.overlay-new-newsorrss
+            .overlay-item
+                .news-options
+                    .news-option-header News/Opinion
+                    .news-option(data-url='http://qz.com/feed/') Quartz
+                    .news-option(data-url='http://www.vox.com/rss/index.xml') Vox
+                    .news-option-header Tech
+                    .news-option(data-url='http://feeds.feedburner.com/TechCrunch/') TechCrunch
+                    .news-option(data-url='http://feeds.mashable.com/Mashable') Mashable
+                    .news-option(data-url='http://www.theverge.com/rss/index.xml') The Verge
+                    .news-option(data-url='http://feeds2.feedburner.com/TheNextWeb') The Next Web
+                    .news-option-header Hacking
+                    .news-option(data-url='https://news.ycombinator.com/rss') Hacker News
+                    .news-option-header Design
+                    .news-option(data-url='https://news.layervault.com/?format=rss') Designer News
+                    .news-option(data-url='http://feeds.sidebar.io/SidebarFeed') Sidebar
+                    .news-option-header Marketing
+                    .news-option(data-url='http://feeds.feedburner.com/bufferapp') Buffer Blog
+                    .news-option(data-url='http://www.socialmediaexaminer.com/feed/') Social Media Examiner
+                    .news-option-header Startups
+                    .news-option(data-url='http://tech.co/feed') Tech Cocktail
+                    .news-option(data-url='http://feeds.venturebeat.com/VentureBeat') VentureBeat
+                .add-new-rss
+                    .news-option-header Custom RSS
+                    .news-option
+                        input.news-option-rss(type='text' placeholder='Enter a new RSS url')
+                        .button-line.overlay-block-button.add-new-rss-link Add New Stream
+        .overlay.overlay-new-network
+            .overlay-item(style="width: 360px;")
+                .overlay-header Add a new account
+                .overlay-content
+                    a(href='/auth/twitter')
+                        .network-box(style='color:#55ACED')
+                            .network-logo.icon-twitter
+                            .network-title Twitter
+                    a(href='/auth/facebook')
+                        .network-box(style='color:#3E5C9A')
+                            .network-logo.icon-facebook
+                            .network-title Facebook Page
+                    .clear
+        .overlay.overlay-new-canvas
+            .overlay-item
+                .overlay-header Add new dashboard
+                .overlay-content
+                    .overlay-block-option
+                        .settings-block-input-name Name
+                        input.settings-block-input#new_canvas_name(type='name' placeholder='What shall we call this dashboard?')
+                    .overlay-block-option
+                        .button-line.overlay-block-button.create-new-canvas Create Dashboard
+        .overlay.overlay-settings
+            .overlay-item
+                .account-settings.x x
+                .overlay-header Settings
+                .settings-content
+                    .settings-left
+                        .settings-header.settings-account Settings
+                    .settings-right
+                        .settings-account
+                            .overlay-block-option
+                                .settings-block-input-name Name
+                                input.settings-block-input#update_name(type='name' value= udata.name)
+                            .overlay-block-option
+                                .settings-block-input-name Email
+                                input.settings-block-input#update_email(type='email' value= udata.email)
+                                input.settings-block-input#confirm_email(diabled='disabled' hidden='hidden' type='email' value= udata.email)
+                            .overlay-block-option
+                                .settings-block-input-name Update Password
+                                input.settings-block-input#update_pass(type='password' placeholder="Enter new password")
+                            .overlay-block-option(style='width:80px')
+                                .button-line.overlay-block-button.save-settings-user Save
+                            a.overlay-block-option.delete-account Delete Account (Permanently, Instantly)
+                .clear

@@ -1,0 +1,26 @@
+extends head
+
+block content
+    .overflow-black
+        .login-holder
+            .login-top
+                .login-logo
+                    a(href='/')
+                        .home-header-logo-container
+                            .home-header-text
+                                | Sign Up Now
+                        .clear
+            .login-container
+                .login-header All plans include a 30 day free trial
+                .login-alert Your password or username is incorrect!
+                input.signup-input#name(type='name' placeholder='Full Name')
+                input.signup-input#email(type='email' placeholder='Email Address')
+                input.signup-input#pass(type='password' placeholder='Password')
+                input.button-line#submit2(type='submit' value='Sign Up')
+    script.
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+      ga('create', 'UA-72813135-2', 'auto');
+      ga('send', 'pageview');

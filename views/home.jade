@@ -1,0 +1,214 @@
+doctype html
+//if lt IE 7
+  html.no-js.lt-ie9.lt-ie8.lt-ie7(lang='')
+//if IE 7
+  html.no-js.lt-ie9.lt-ie8(lang='')
+//if IE 8
+  html.no-js.lt-ie9(lang='')
+// [if gt IE 8] <!
+html.no-js(lang='')
+  // <![endif]
+  head
+    meta(charset='utf-8')
+    // <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    meta(http-equiv='X-UA-Compatible', content='IE=edge')
+    title ReplyMap — Social Media Management That Doesn't Suck
+    meta(name='description', content='')
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+    link(rel='apple-touch-icon', href='apple-touch-icon.png')
+    link(rel='icon', type='image/png', href='favicon-32x32.png', sizes='32x32')
+    link(rel='icon', type='image/png', href='favicon-16x16.png', sizes='16x16')
+    link(rel='stylesheet', href='css/normalize.min.css')
+    link(rel='stylesheet', href='css/bootstrap.min.css')
+    link(rel='stylesheet', href='css/jquery.fancybox.css')
+    link(rel='stylesheet', href='css/flexslider.css')
+    link(rel='stylesheet', href='css/styles.css')
+    link(rel='stylesheet', href='css/queries.css')
+    link(rel='stylesheet', href='css/etline-font.css')
+    link(rel='stylesheet', href='bower_components/animate.css/animate.min.css')
+    link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css')
+    script(src='js/vendor/modernizr-2.8.3-respond-1.4.2.min.js')
+  body#top
+    //if lt IE 8
+      p.browserupgrade
+        | You are using an
+        strong outdated
+        |  browser. Please
+        a(href='http://browsehappy.com/') upgrade your browser
+        |  to improve your experience.
+    section.hero
+      section.navigation
+        header
+          .header-content
+            .logo
+              a(href='/')
+                img(src='img/replymap.png', alt='ReplyMap logo')
+            .header-nav
+              nav
+                ul.primary-nav
+                  li
+                    a(href='/features') Features
+                  li
+                    a(href='/pricing') Pricing
+                  li
+                    a(href='mailto:hello@replymap.com') Contact Us
+                ul.member-actions
+                  li
+                    a.login(href='/login') Log In
+                  li
+                    a.btn-white.btn-small(href='/pricing') Sign Up
+            .navicon
+              a.nav-toggle(href='#')
+                span
+      .container
+        .row
+          .col-md-10.col-md-offset-1
+            .hero-content.text-center
+              h1 Social media management that doesn't suck
+              p.intro
+                | Monitor, engage and reply across all your social networks.
+                br
+                | For individuals, community managers, teams, small businesses and agencies.
+              a.btn.btn-fill.btn-large.btn-margin-right(href='pricing.html') Sign Up Free
+              a.btn.btn-accent.btn-large(href='#intro') Learn more
+      .down-arrow.floating-arrow
+        a(href='#intro')
+          i.fa.fa-angle-down
+    section#intro.intro.section-padding
+      .container
+        h3(style='text-align: center; margin-top: -25px; margin-bottom: 100px;') Our Principles
+        .row
+          .col-md-4.intro-feature
+            .intro-icon
+              span.icon 1
+            .intro-content
+              h5 Simple
+              p
+                | Managing social networks shouldn't be difficult. ReplyMap cuts out the cruft to make it as simple and easy as possible for you.
+          .col-md-4.intro-feature
+            .intro-icon
+              span.icon 2
+            .intro-content
+              h5 Fair
+              p
+                | We won't charge exorbitant fees or slip in hidden charges. We want to make a product that works for you and charge a fair price.
+          .col-md-4.intro-feature
+            .intro-icon
+              span.icon 3
+            .intro-content.last
+              h5 Available
+              p
+                | We want to offer the best customer support in the business. That means being available for you to ask questions of us at any time.
+    section#features.features.section-padding
+      .container
+        .row
+          .col-md-5.col-md-offset-7
+            .feature-list
+              h3 Your favourite social networks
+              p
+                | ReplyMap connects to your accounts across Facebook and Twitter so you can manage them from one place.
+              ul.features-stack
+                li.feature-item
+                  .feature-icon
+                    span.icon(data-icon='')
+                  .feature-content
+                    h5 Facebook
+                    p Read, like and reply to posts on and mentions of your Facebook Page.
+                li.feature-item
+                  .feature-icon
+                    span.icon(data-icon='')
+                  .feature-content
+                    h5 Twitter
+                    p
+                      | Read, like, retweet and reply to tweets from @mentions, specific users and search keywords.
+                    a.btn.btn-ghost.btn-accent.btn-small(href='/features', style='margin-top: 50px;') View All Features
+      .device-showcase
+        .devices
+          .ipad-wrap.wp1
+      .responsive-feature-img
+        img(src='img/ipad-device.png', alt='responsive devices')
+    section.hero-strip.section-padding(style='margin-top: 0px;')
+      .container
+        .col-md-12.text-center
+          h2
+            | Free trial. No set up costs.
+          p
+            | Every plan has a month long free trial so you can see whether ReplyMap works for you.
+            br
+            | We're always on hand to help so if you have any questions, just get in touch.
+          a.btn.btn-ghost.btn-accent.btn-large(href='/pricing') View Pricing
+    section#assets.features-extra.section-padding
+      .container
+        .row
+          .col-md-5
+            .feature-list
+              h3 Built for you
+              p
+                | ReplyMap is built for social media managers by social media managers. Whether you're managing your own feeds or someone else's, we've built ReplyMap to work for you.
+              p
+                | You won't find a long list of useless features that slow down the product. If you're looking for enterprise software, this isn't for you. This is handcrafted, well designed software that works.
+              a.btn.btn-ghost.btn-accent.btn-small(href='/pricing') Sign Up Now
+      .macbook-wrap.wp3
+      .responsive-feature-img
+        img(src='img/macbook-pro.png', alt='responsive devices')
+    section.testimonial-slider.section-padding.text-center
+      .container
+        .row
+          .col-md-12
+            .flexslider
+              ul.slides
+                li
+                  .avatar
+                    img(src='img/tristan-thomas-small.jpg', alt='Tristan Thomas testimonial')
+                  h2 "We built ReplyMap because we were so frustrated with existing tools"
+                  p.author Tristan Thomas, Founder
+    section#download.sign-up.section-padding.text-center
+      .container
+        .row
+          .col-md-6.col-md-offset-3
+            h3 Get started with ReplyMap today, absolutely free
+            a.btn.btn-ghost.btn-accent.btn-large(href='/pricing') Sign Up Now
+    section.to-top
+      .container
+        .row
+          .to-top-wrap
+            a.top(href='#top')
+              i.fa.fa-angle-up
+    footer
+      .container
+        .row
+          .col-md-7
+            .footer-links
+              ul.footer-group
+                li
+                  a(href='/features') Features
+                li
+                  a(href='/pricing') Pricing
+                li
+                  a(href='/pricing') Sign Up
+                li
+                  a(href='https://www.iubenda.com/privacy-policy/7886167') Privacy
+              p Copyright © 2016 ReplyMap
+          .social-share
+            p Share the ReplyMap love
+            a.twitter-share(href='https://twitter.com/intent/tweet?url=https://replymap.com')
+              i.fa.fa-twitter
+            a.facebook-share(href='https://www.facebook.com/sharer/sharer.php?u=https%3A//replymap.com')
+              i.fa.fa-facebook
+    script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js')
+    script.
+      window.jQuery || document.write('<script src="js/vendor/jquery-1.11.2.min.js"><\\/script>')
+    script(src='bower_components/retina.js/dist/retina.js')
+    script(src='js/jquery.fancybox.pack.js')
+    script(src='js/vendor/bootstrap.min.js')
+    script(src='js/scripts.js')
+    script(src='js/jquery.flexslider-min.js')
+    script(src='bower_components/classie/classie.js')
+    script(src='bower_components/jquery-waypoints/lib/jquery.waypoints.min.js')
+    script.
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+      ga('create', 'UA-72813135-2', 'auto');
+      ga('send', 'pageview');

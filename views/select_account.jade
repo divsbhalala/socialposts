@@ -1,0 +1,34 @@
+extends layout
+
+block content
+    .select-net-select
+        .select-net-header Select the page you want to add to ReplyMap
+        .select-net-content
+            -if(blogs){
+                -for(var i = 0; i < blogs.length; i++){
+                    a(href='/auth/tumblr/return?username=' + blogs[i].name +'&name=' + blogs[i].title )
+                        .select-net-box
+                            .select-net-image
+                                img(src="http://api.tumblr.com/v2/blog/" + blogs[i].name +".tumblr.com/avatar")
+                            .select-net-content-e
+                                .select-net-name= blogs[i].title
+                                .select-net-title
+                                    | !{blogs[i].name}.tumblr.com
+                -}
+            -} else if(pages){
+                - pages = pages.data;
+                -if(pages.length !== 0){
+                    -for(var i = 0; i < pages.length; i++){
+                        a(href='/auth/facebook/return?id=' + pages[i].id +'&name=' + pages[i].name + '&auth=' + pages[i].access_token )
+                            .select-net-box
+                                .select-net-image
+                                    img(src="https://graph.facebook.com/v2.2/" + pages[i].id +"/picture")
+                                .select-net-content-e
+                                    .select-net-name= pages[i].name
+                                    .select-net-title
+                                        | !{pages[i].name}
+                    -}
+                -} else {
+                    | It doesn't look like you have any Facebook Pages. Did you authorise ReplyMap to access them?<br><br><a href='/app' style='color: blue'>Click here to return to ReplyMap and try again.</a>
+                -}
+            -}

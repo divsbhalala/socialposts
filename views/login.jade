@@ -1,0 +1,36 @@
+extends head
+
+block content
+    .forgot-password
+        .forgot-password-header Enter your email.
+        .forgot-password-container
+            input(placeholder='Email')
+        .button-line.forgot-password-submit Send Recovery Email
+        .nevermind-password nevermind
+    .overflow-black
+        .login-holder
+            .login-top
+                .login-logo
+                    a(href='/')
+                        .home-header-logo-container
+                            .home-header-text
+                                | Log In Now
+                        .clear
+            .login-container
+                .login-alert We recently have locked all accounts until beta testing is open!
+                | <!--- Your email or password looks wrong <br>  --->
+                input.login-input#email(type='email' placeholder='Email')
+                input.login-input#pass(type='password' placeholder='Password')
+                input.button-line#submit(type='submit' value='Log In')
+            .login-footer
+                a(href='/signup')
+                    .login-footer-text Want an account? Sign up
+                .login-footer-text.forgot-pw(style="text-align: right;") Forgot password?
+
+      script.
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-72813135-2', 'auto');
+        ga('send', 'pageview');
