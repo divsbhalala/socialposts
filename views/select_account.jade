@@ -2,7 +2,7 @@ extends layout
 
 block content
     .select-net-select
-        .select-net-header Select the page you want to add to ReplyMap
+        .select-net-header Select the page you want to add to SocialPosts
         .select-net-content
             -if(blogs){
                 -for(var i = 0; i < blogs.length; i++){
@@ -29,6 +29,6 @@ block content
                                         | !{pages[i].name}
                     -}
                 -} else {
-                    | It doesn't look like you have any Facebook Pages. Did you authorise ReplyMap to access them?<br><br><a href='/app' style='color: blue'>Click here to return to ReplyMap and try again.</a>
+                    | It doesn't look like you have any Facebook Pages. Did you authorise SocialPosts to access them?<br><br><a href='/app' style='color: blue'>Click here to return to SocialPosts and try again.</a>
                 -}
             -}

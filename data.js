@@ -216,7 +216,7 @@ module.exports = function (app) {
 			if (validateEmail(email) != false) {
 				accounts.findOne({email: email}, function (e, o) {
 					if (o) {
-						res.send('We recognise that email! Looks like you already have a ReplyMap account.');
+						res.send('We recognise that email! Looks like you already have a SocialPosts account.');
 					} else {
 						saltAndHash(pass, function (hash) {
 							newData.email = email;
