@@ -914,7 +914,7 @@ $(document).on('click', '.delete-account', function (e) {
 			window.location.href = '/'
 		},
 		error: function () {
-			error_node('There was an unknown error. Please reload the page. If it continues, get in touch with us at help@replymap.com.');
+			error_node('There was an unknown error. Please reload the page. If it continues, get in touch with us at help@socialposts.co.');
 		}
 	});
 });

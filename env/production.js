@@ -11,7 +11,7 @@ module.exports = {
         tumblrconsume_secret:"",
         facebookconsume:"",
         facebookconsume_secret:"",
-        url_host:'https://replymap.com',
+        url_host:'https://socialposts.co',
         stripe:"",
         connection_string:'',
         email:{
