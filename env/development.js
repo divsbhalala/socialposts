@@ -13,7 +13,7 @@ module.exports = {
         facebookconsume_secret:"b755c0d863901e1d36492f5f5f74f908",
         url_host:'http://localhost:4002',
         stripe:"",
-        connection_string:'mongodb://localhost:27017/integration_test',
+        connection_string:'mongodb://root:sweetrox5288@jello.modulusmongo.net:27017/dum5Eteg',
         email:{
             host		: '',
             user 		: '',
